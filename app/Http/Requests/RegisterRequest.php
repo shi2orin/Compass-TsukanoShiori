@@ -40,8 +40,8 @@ class RegisterRequest extends FormRequest
         return [
             'over_name' => ['required','string' ,'max:10'],
             'under_name' => ['required','string' ,'max:10'],
-            'over_name_kana' => ['required','string' ,'max:30','regex:/^[ア-ン゛゜ァ-ォャ-ョー+$/u]'],
-            'under_name_kana' => ['required','string' ,'max:30','regex:/^[ア-ン゛゜ァ-ォャ-ョー+$/u]'],
+            'over_name_kana' => ['required','string' ,'max:30','regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
+            'under_name_kana' => ['required','string' ,'max:30','regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'mail_address' => ['required','max:100','email','unique:users'],
             'sex' => ['required','in:1,2,3'],
             'birth_day' =>['required','after:1999-12-31','before:tomorrow','date'],
