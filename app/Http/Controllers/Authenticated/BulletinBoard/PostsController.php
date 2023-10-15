@@ -12,6 +12,7 @@ use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use Auth;
+use Validator;
 
 class PostsController extends Controller
 {
@@ -58,6 +59,19 @@ class PostsController extends Controller
     }
 
     public function postEdit(Request $request){
+        $messages = [
+        'post_title.required' => '※タイトルは必須です。',
+        'post_title.max' => '※タイトルは100文字以内で記入してください。',
+        'post_body.required' => '※投稿内容は必須です。',
+        'post_body.max' => '※投稿内容は5000文字以内で記入してください。。',
+    ];
+        $validator = Validator::make($request->all(),[
+            'post_title' => ['required', 'string', 'max:100'],
+            'post_body' => ['required', 'string', 'max:5000']],$messages
+        );
+        if ($validator->fails()) {
+            return redirect()->route('post.detail', ['id' => $request->post_id])->withErrors($validator)->withInput();
+        }
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
             'post' => $request->post_body,

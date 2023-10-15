@@ -8,14 +8,22 @@
           <div>
           </div>
            @if (Auth::user()->id ==$post->user_id)
-          <div>
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
-          </div>
+            <div>
+              <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+              <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
+            </div>
           @endif
         </div>
 
         <div class="contributor d-flex">
+        <div>
+          @if($errors->first('post_title'))
+          <span class="error_message">{{ $errors->first('post_title') }}</span>
+          @endif
+          @if($errors->first('post_body'))
+          <span class="error_message">{{ $errors->first('post_body') }}</span>
+          @endif
+        </div>
           <p>
             <span>{{ $post->user->over_name }}</span>
             <span>{{ $post->user->under_name }}</span>
