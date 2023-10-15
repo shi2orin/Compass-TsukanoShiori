@@ -64,6 +64,8 @@ class RegisterRequest extends FormRequest
             'sex.required' => '性別が未入力です。',
             'birth_day.required' => '誕生日が未入力です。',
             'birth_day.date' => '正しい生年月日を入力してください。',
+            'birth_day.after' => '2000年1月1日以降の日付を入力してください。',
+            'birth_day.before' => '今日より前の日付を入力してください。',
             'role.required' => '役職が未入力です。',
             'password.required' => 'パスワードが未入力です。',
             'password.min' => 'パスワードは8文字以上で設定してください。',
