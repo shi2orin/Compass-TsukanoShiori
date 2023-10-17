@@ -89,6 +89,16 @@ class PostsController extends Controller
     }
 
     public function commentCreate(Request $request){
+        $messages = [
+        'comment.required' => '※コメント内容は必須です。',
+        'comment.max' => '※コメントは2500文字以内で記入してください。',
+    ];
+        $validator = Validator::make($request->all(),[
+            'comment' => ['required', 'string', 'max:2500']],$messages
+        );
+        if ($validator->fails()) {
+            return redirect()->route('post.detail', ['id' => $request->post_id])->withErrors($validator)->withInput();
+        }
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),
