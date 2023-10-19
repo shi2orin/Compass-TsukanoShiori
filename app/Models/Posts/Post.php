@@ -22,6 +22,10 @@ class Post extends Model
     public function postComments(){
         return $this->hasMany('App\Models\Posts\PostComment');
     }
+    public function likes()
+    {
+        return $this->hasMany('App\Models\Posts\Like');
+    }
 
     public function subCategories(){
         return $this->belongsToMany('App\Models\Categories\SubCategory', 'post_sub_categories', 'post_id', 'sub_category_id');

@@ -46,15 +46,17 @@ class PostsController extends Controller
 
     public function postInput(){
         $main_categories = MainCategory::get();
-        return view('authenticated.bulletinboard.post_create', compact('main_categories'));
+        $sub_categories = SubCategory::get();
+        return view('authenticated.bulletinboard.post_create', compact('main_categories','sub_categories'));
     }
 
     public function postCreate(PostFormRequest $request){
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
-            'post' => $request->post_body
+            'post' => $request->post_body,
         ]);
+        $post->subCategories()->attach($sub_category);
         return redirect()->route('post.show');
     }
 
@@ -68,8 +70,6 @@ class PostsController extends Controller
             'post_title.max' => '※タイトルは100文字以内で記入してください。',
             'post_body.required' => '※投稿内容は必須です。',
             'post_body.max' => '※投稿内容は5000文字以内で記入してください。。',
-            'comment.required' => '※コメント内容は必須です。',
-            'comment.max' => '※コメントは2500文字以内で記入してください。',
         ]);
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
@@ -84,12 +84,12 @@ class PostsController extends Controller
     }
     public function mainCategoryCreate(Request $request){
         $request->validate([
-            'main_category_name' => ['required', 'string', 'max:100','unique:main_categories']
+            'main_category' => ['required', 'string', 'max:100','unique:main_categories']
         ],
         [
-            'main_category_name.required' => '※メインカテゴリー名は必須です。',
-            'main_category_name.max' => '※100文字以内で記入してください。',
-            'main_category_name.unique' => '※既に登録されています。',
+            'main_category.required' => '※メインカテゴリー名は必須です。',
+            'main_category.max' => '※100文字以内で記入してください。',
+            'main_category.unique' => '※既に登録されています。',
         ]);
         MainCategory::create(['main_category' => $request->main_category]);
         return redirect()->route('post.input');
@@ -97,14 +97,14 @@ class PostsController extends Controller
     public function subCategoryCreate(Request $request){
         $request->validate([
             'main_category_id' => ['required', 'exists:main_categories,id'],
-            'sub_category_name' => ['required', 'string', 'max:100','unique:sub_categories'],
+            'sub_category' => ['required', 'string', 'max:100','unique:sub_categories'],
         ],
         [
             'main_category_id.required' => '※メインカテゴリーは必須です。',
             'main_category_id.exists' => '※登録済みのメインカテゴリーから選択してください。',
-            'sub_category_name.required' => '※サブカテゴリーは必須です。',
-            'sub_category_name.max' => '※サブカテゴリー100文字以内で記入してください。',
-            'sub_category_name.unique' => '※既に登録されています。',
+            'sub_category.required' => '※サブカテゴリーは必須です。',
+            'sub_category.max' => '※サブカテゴリー100文字以内で記入してください。',
+            'sub_category.unique' => '※既に登録されています。',
         ]);
         SubCategory::create([
             'main_category_id' => $request->main_category_id,

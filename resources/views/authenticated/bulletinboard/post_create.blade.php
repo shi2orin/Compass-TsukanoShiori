@@ -6,11 +6,11 @@
     <div class="">
       <p class="mb-0">カテゴリー</p>
       <select class="w-100" form="postCreate" name="post_category_id">
-        @foreach($main_categories as $main_category)
-        <optgroup label="{{ $main_category->main_category }}"></optgroup>
+
         <!-- サブカテゴリー表示 -->
-        </optgroup>
-        @endforeach
+        @foreach($sub_categories as $sub_category)
+        <option class="sub_category_name" value="{{ $sub_category->id }}">{{ $sub_category->sub_category }}</option>
+         @endforeach
       </select>
     </div>
     <div class="mt-3">
@@ -56,6 +56,11 @@
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="subCategoryRequest">
       </div>
       </form>
+        <div>
+          @if($errors->first('sub_category'))
+          <span class="error_message">{{ $errors->first('sub_category') }}</span>
+          @endif
+        </div>
     </div>
   </div>
   @endcan
