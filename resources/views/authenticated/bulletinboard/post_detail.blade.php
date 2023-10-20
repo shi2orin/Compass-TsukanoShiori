@@ -6,7 +6,13 @@
       <div class="p-3">
         <div class="detail_inner_head">
           <div>
+
+          <div>
+             @foreach($post->subCategories as $subCategory)
+              <p>{{ $subCategory->sub_category }}</p>
+              @endforeach
           </div>
+             </div>
            @if (Auth::user()->id ==$post->user_id)
             <div>
               <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
@@ -14,6 +20,7 @@
             </div>
           @endif
         </div>
+
 
         <div class="contributor d-flex">
         <div>

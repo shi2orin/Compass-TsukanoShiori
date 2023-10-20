@@ -40,7 +40,7 @@ class PostsController extends Controller
     }
 
     public function postDetail($post_id){
-        $post = Post::with('user', 'postComments')->findOrFail($post_id);
+        $post = Post::with('user', 'postComments','subCategories')->findOrFail($post_id);
         return view('authenticated.bulletinboard.post_detail', compact('post'));
     }
 
@@ -56,7 +56,8 @@ class PostsController extends Controller
             'post_title' => $request->post_title,
             'post' => $request->post_body,
         ]);
-        $post->subCategories()->attach($sub_category);
+        $sub_category_id = $request->sub_category;
+        $post->subCategories()->attach($sub_category_id);
         return redirect()->route('post.show');
     }
 
@@ -106,6 +107,7 @@ class PostsController extends Controller
             'sub_category.max' => '※サブカテゴリー100文字以内で記入してください。',
             'sub_category.unique' => '※既に登録されています。',
         ]);
+
         SubCategory::create([
             'main_category_id' => $request->main_category_id,
             'sub_category' => $request->sub_category
