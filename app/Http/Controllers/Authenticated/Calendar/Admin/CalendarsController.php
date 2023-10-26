@@ -16,6 +16,7 @@ class CalendarsController extends Controller
 {
     public function show(){
         $calendar = new CalendarView(time());
+        $reserve = ReserveSettings::with('users');
         return view('authenticated.calendar.admin.calendar', compact('calendar'));
     }
 
