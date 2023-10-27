@@ -17,13 +17,9 @@
 </div>
 <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
-<script>
-  const reserveDay = @json($day);
-  const reservePart = @json($reservePart);
-</script>
       <div class="modal__content">
-        <P>予約日：{{$day}}</P>
-        <p>時間：{{$reservePart}}</p>
+        <P>予約日：</P>
+        <p>時間：</p>
         <p>上記の予約をキャンセルしてもよろしいでしょうか？</p>
         <form action="/delete/calendar" method="post" id="deleteParts">
           <div class="modal-close">閉じる</div>
