@@ -60,9 +60,9 @@ class CalendarView{
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'.$reservePart.'</p>';
 
           }else{
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 js-modal-open" id="delete_date" style="font-size:12px" data-reserveDay="' . $day->everyDay() . '" data-reservePart="' . $reservePart . '" value="'.
+            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 js-modal-open" id="delete_date" style="font-size:12px" reservePart="'.$reservePart.'" value="'.
              $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="deleteParts">';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }else{
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
