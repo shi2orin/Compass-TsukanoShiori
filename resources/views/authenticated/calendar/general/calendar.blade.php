@@ -18,14 +18,12 @@
 <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
       <div class="modal__content">
-        <P>予約日：</P>
-        <p>時間：</p>
+        <p class="reserveDay"></p>
+        <p class="reservePart"></p>
         <p>上記の予約をキャンセルしてもよろしいでしょうか？</p>
-        <form action="/delete/calendar" method="post" id="deleteParts">
           <div class="modal-close">閉じる</div>
           <input type="submit" class="btn btn-danger" value="キャンセル" form="deleteParts">
-          {{csrf_field()}}
-        </form>
+
       </div>
     </div>
 </div>
