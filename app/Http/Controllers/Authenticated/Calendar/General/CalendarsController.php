@@ -38,12 +38,7 @@ class CalendarsController extends Controller
     }
     public function delete(Request $request){
 
-        $reservePart = $request->reservePart;
-        $setting_reserve = $request->setting_reserve;
-        $reserve_settings = ReserveSettings::where('setting_part',$reservePart)
-                                    ->where('setting_reserve',$setting_reserve)
-                                  ->first();
-        $reserve_settings->users()->detach(Auth::id());
-
+        $reserve = $request->day;
+        dd($reserve);
     }
 }

@@ -6,9 +6,9 @@ $(function () {
     // 押されたボタンから投稿内容を取得し変数へ格納
 
     // 押されたボタンから投稿のidを取得し変数へ格納（どの投稿を編集するか特定するのに必要な為）
-    var reserveDay = document.getElementById("delete_date").value;
+    var reservePart = document.getElementById("delete_date").value;
+    var reserveDay = $(this).data('date');
     console.log(reserveDay);
-    var reservePart = $(this).data('reservePart');
 
 
 
