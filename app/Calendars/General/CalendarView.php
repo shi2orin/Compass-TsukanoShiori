@@ -49,6 +49,7 @@ class CalendarView{
 
         if(in_array($day->everyDay(), $day->authReserveDay())){
           $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
+          $deletePart = $reservePart;
           if($reservePart == 1){
             $reservePart = "リモ1部";
           }else if($reservePart == 2){
@@ -60,8 +61,10 @@ class CalendarView{
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'.$reservePart.'</p>';
 
           }else{
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 js-modal-open" id="delete_date" style="font-size:12px" data-date="'.$day->everyDay().'" value="'.$reservePart.'">'. $reservePart .'</button>';
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 js-modal-open" id="delete_date" style="font-size:12px" data-deletePart="'.$deletePart.'" data-date="'.$day->everyDay().'" value="'.$reservePart.'">'. $reservePart .'</button>';
+                        $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+
+            // モーダルに一旦渡しているため、ここの情報を変えても変わらない可能性、$deletePartをjsに渡してpostidと同じかんじで送れば2つの情報が手に入る
           }
         }else{
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
@@ -79,7 +82,7 @@ class CalendarView{
     $html[] = '</table>';
     $html[] = '</div>';
     $html[] = '<form action="/reserve/calendar" method="post" id="reserveParts">'.csrf_field().'</form>';
-    $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">'.csrf_field().'</form>';
+    $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">'.csrf_field().' <input type="hidden" name="deletePart" class="deletePart" value=""><input type="hidden" name="deleteDay" class="deleteDay" value=""></form>';
 
     return implode('', $html);
   }

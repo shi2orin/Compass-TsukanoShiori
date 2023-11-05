@@ -8,7 +8,7 @@ $(function () {
     // 押されたボタンから投稿のidを取得し変数へ格納（どの投稿を編集するか特定するのに必要な為）
     var reservePart = document.getElementById("delete_date").value;
     var reserveDay = $(this).data('date');
-    console.log(reserveDay);
+    var deletePart = $(this).data('deletepart');
 
 
 
@@ -16,6 +16,10 @@ $(function () {
     $('.reserveDay').text('予約日:' + reserveDay);
     // 取得した投稿のidをモーダルの中身へ渡す
     $('.reservePart').text('予約時間:' + reservePart);
+
+    $('.deletePart').val(deletePart);
+    $('.deleteDay').val(reserveDay);
+
 
     return false;
   });

@@ -22,7 +22,8 @@
         <p class="reservePart"></p>
         <p>上記の予約をキャンセルしてもよろしいでしょうか？</p>
           <div class="modal-close">閉じる</div>
-          <input type="submit" class="btn btn-danger" value="キャンセル" form="deleteParts">
+          <input type="submit" class="btn btn-danger delete-btn" value="キャンセル" form="deleteParts">
+
 
       </div>
     </div>
