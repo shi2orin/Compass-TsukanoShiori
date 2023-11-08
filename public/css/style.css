@@ -23,10 +23,16 @@ li {
 
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  width: 200px;
   height: 100vh;
+  padding: 30px 10px;
   background-color: #03AAD2;
   font-weight: bold;
+}
+
+.material-symbols-outlined {
+  color: #FFF;
+  padding-right: 5px;
 }
 
 .main-container {
@@ -42,6 +48,46 @@ li {
   border-radius: 10px;
   background: #FFF;
 }
+
+/* 投稿一覧 */
+
+/* 矢印 */
+.arrow-wrap {
+  position: absolute;
+  right: 80px;
+  top: 30%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+}
+
+.arrow {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  color: #494949;
+}
+
+.arrow:before {
+  position: absolute;
+  content: "";
+  transition: all .4s;
+  width: 10px;
+  height: 10px;
+  border: 0px;
+  border-top: solid 2px;
+  border-right: solid 2px;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+
+.arrow.open:before {
+  top: 56%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
 
 /* スクール予約関連 */
 .day-blank {
@@ -227,19 +273,81 @@ li {
   color: #FFF;
 }
 
+.post_btn {
+  background-color: #03AAD2;
+  width: 100px;
+  padding: 5px 40px;
+}
+
+.post_btn a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.post_btn a:hover {
+  color: #494949;
+}
+
+
 .category_btn {
-  font-size: 12px;
+  height: 2.5rem;
   border-radius: 5px;
-  padding: 0 5px;
   border: none;
-  background: #999;
   color: #FFF;
 }
 
-.main_categories span,
-.sub_categories li input {
-  list-style: none;
+.category_search {
+  border-width: thin;
+  border-color: #D3D3D3;
+  background-color: #ECF1F6;
+}
+
+/* カテゴリー検索 */
+.category {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  max-width: 300px;
+  position: relative;
+  width: 100%;
+}
+
+.main_category {
   cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+
+}
+
+.sub_category {
+  display: none;
+  padding: 10px 20px;
+  font-size: 12px;
+
+}
+
+/* 矢印 */
+.main_category {
+  position: relative;
+}
+
+.main_category::after {
+  border-right: solid 2px #494949;
+  border-top: solid 2px #494949;
+  content: "";
+  display: block;
+  height: 8px;
+  position: absolute;
+  right: 25px;
+  top: 38%;
+  transform: rotate(135deg);
+  transition: transform .3s ease-in-out, top .3s ease-in-out;
+  width: 8px;
+}
+
+.main_category.open::after {
+  top: 45%;
+  transform: rotate(-45deg);
 }
 
 /* ユーザー検索 */

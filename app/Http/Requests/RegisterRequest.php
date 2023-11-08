@@ -52,12 +52,12 @@ class RegisterRequest extends FormRequest
     }
     public function messages() {
         return [
-            'over_name.required'=> '名前が未入力です',
+            'over_name.required'=> '苗字が未入力です',
             'under_name.required'=> '名前が未入力です',
-            'over_name_kana.required' => 'フリガナが未入力です。',
-            'over_name_kana.regex' => 'カタカナで入力してください。',
-            'under_name_kana.required' => 'フリガナが未入力です。',
-            'under_name_kana.regex' => 'カタカナで入力してください。',
+            'over_name_kana.required' => '苗字のフリガナが未入力です。',
+            'over_name_kana.regex' => '苗字をカタカナで入力してください。',
+            'under_name_kana.required' => '名前のフリガナが未入力です。',
+            'under_name_kana.regex' => '名前をカタカナで入力してください。',
             'mail_address.required' => 'メールアドレスが未入力です。',
             'mail_address.email' => 'メール形式で入力してください。',
             'mail_address.unique' => 'このメールアドレスは登録済みです。',

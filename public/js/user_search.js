@@ -7,3 +7,10 @@ $(function () {
     $('.subject_inner').slideToggle();
   });
 });
+
+$(function () {
+  $('.ac-label').click(function () {
+    $(this).next('div').slideToggle();
+    $(this).find(".arrow").toggleClass('open');
+  });
+});
