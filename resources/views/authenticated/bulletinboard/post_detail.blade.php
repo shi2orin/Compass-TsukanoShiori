@@ -9,14 +9,14 @@
 
           <div>
              @foreach($post->subCategories as $subCategory)
-              <p>{{ $subCategory->sub_category }}</p>
+              <p class="category_btn" style="background:#03AAD2;">{{ $subCategory->sub_category }}</p>
               @endforeach
           </div>
              </div>
            @if (Auth::user()->id ==$post->user_id)
             <div>
-              <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-              <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
+              <button class="edit-modal-open btn btn-primary" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</button>
+              <button class="btn btn-danger" ><a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')"style="color:#FFF;">削除</a></button>
             </div>
           @endif
         </div>
