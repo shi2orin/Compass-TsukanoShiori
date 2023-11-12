@@ -16,6 +16,12 @@ li {
   list-style: none;
 }
 
+.top_area {
+  background-color: #FFF;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
+}
+
 /* エラーメッセージ*/
 .error_message {
   color: #FF0000;
@@ -47,45 +53,9 @@ li {
 .user_status {
   border-radius: 10px;
   background: #FFF;
-}
-
-/* 投稿一覧 */
-
-/* 矢印 */
-.arrow-wrap {
-  position: absolute;
-  right: 80px;
-  top: 30%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-}
-
-.arrow {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  color: #494949;
-}
-
-.arrow:before {
-  position: absolute;
-  content: "";
-  transition: all .4s;
-  width: 10px;
-  height: 10px;
-  border: 0px;
-  border-top: solid 2px;
-  border-right: solid 2px;
-  top: 46%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(135deg);
-}
-
-.arrow.open:before {
-  top: 56%;
-  transform: translate(-50%, -50%) rotate(-45deg);
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
+  margin-top: 150px;
+  margin-left: 200px;
 }
 
 
@@ -116,7 +86,7 @@ li {
 }
 
 .adjust-table {
-  width: 70% !important;
+  width: 100% !important;
 }
 
 .adjust-table td {
@@ -127,8 +97,27 @@ li {
   justify-content: space-around;
 }
 
+.adjust-area input {
+  border-color: #ECF1F6;
+  border-width: thin;
+}
+
 .adjust-table-btn {
-  width: 70%;
+  width: 100%;
+}
+
+.reserve_detail th {
+  background-color: #03AAD2;
+  color: #FFF;
+  padding: 5px;
+}
+
+.reserve_detail tr:nth-child(odd) {
+  background-color: #e0ffff;
+}
+
+.reserve_detail td {
+  padding: 10px;
 }
 
 /* モーダル */
@@ -226,10 +215,16 @@ li {
   cursor: pointer;
 }
 
+.modal-inner-title input {
+  border: solid 1px #D3D3D3;
+}
+
 .modal-inner-body textarea {
   height: 150px;
   resize: none;
+  border: solid 1px #D3D3D3;
 }
+
 
 .edit-modal-btn {
   justify-content: space-between;
@@ -353,13 +348,12 @@ li {
 .reserve_users_area {
   display: flex;
   flex-wrap: wrap;
-  width: 800px;
-  margin: 10px auto;
+  width: 80%;
+  margin: 10px 30px;
   height: 80vh;
   overflow: scroll;
   padding: 10px;
-  background: #FFF;
-  border-radius: 5px;
+  background: #ECF1F6;
 }
 
 .reserve_users_area span {
@@ -369,6 +363,47 @@ li {
 .one_person {
   width: 250px;
   height: 250px;
+  background-color: #FFF;
+  margin-right: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .5);
+}
+
+.one_person div {
+  color: #494949;
+  padding-bottom: 0.5rem;
+}
+
+.person_bold {
+  font-weight: bold;
+}
+
+
+.search_area label,
+h3 {
+  padding-top: 15px;
+  color: #44617b;
+}
+
+
+.user_search {
+  background-color: #D3D3D3;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  width: 100px;
+}
+
+.free_word {
+  width: 75%;
+  height: 3rem;
+}
+
+.search_conditions {
+  display: flex;
+  padding-bottom: 0;
+  height: 1.5rem;
 }
 
 .search_conditions span {
@@ -377,15 +412,59 @@ li {
 
 .search_conditions_inner {
   display: none;
-  background: #FFF;
+  background: #ECF1F6;
+  padding-bottom: 15px;
+
+}
+
+.search_conditions_inner label {
+  padding-top: 15px;
+  color: #44617b;
 }
 
 .subject_edit_btn {
-  font-size: 12px;
-  color: #0000FF;
+  display: flex;
+  font-size: 15px;
+  color: #03AAD2;
   cursor: pointer;
+
 }
 
 .subject_inner {
   display: none;
+  padding-top: 20px;
+}
+
+/* 矢印 */
+.arrow-wrap {
+  position: relative;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+}
+
+.arrow {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  color: #494949;
+}
+
+.arrow:before {
+  position: absolute;
+  content: "";
+  transition: all .4s;
+  width: 10px;
+  height: 10px;
+  border: 0px;
+  border-top: solid 2px;
+  border-right: solid 2px;
+  top: 130%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+
+.arrow.open:before {
+  top: 130%;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }

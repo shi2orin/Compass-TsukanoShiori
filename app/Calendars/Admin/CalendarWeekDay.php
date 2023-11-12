@@ -16,7 +16,7 @@ class CalendarWeekDay{
   }
 
   function render(){
-    return '<p class="day">' . $this->carbon->format("j") . '日</p>';
+    return '<p class="day mt-1 mb-0">' . $this->carbon->format("j") . '日</p>';
   }
 
   function everyDay(){
@@ -30,19 +30,19 @@ class CalendarWeekDay{
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
 
-    $html[] = '<div class="text-left">';
+    $html[] = '<div class="text-center px-3">';
     if($one_part){
-      $html[] = '<p class="d-flex m-0 p-0"><a href= "/calendar/'.$ymd.'/1">1部</a><span class="w-25" style="height:20px; margin-left:30px;" >'.$one_part->users->count().'</p>';
+      $html[] = '<p class="d-flex m-0 p-0"><a href= "/calendar/'.$ymd.'/1">1部</a><span class="w-25" style="height:20px; margin-left:30px; color:#000;" >'.$one_part->users->count().'</p>';
     }
     if($two_part){
-      $html[] = '<p class="d-flex m-0 p-0"><a href= "/calendar/'.$ymd.'/2">2部</a><span class="w-25" style="height:20px; margin-left:30px;" >'.$two_part->users->count().'</p>';
+      $html[] = '<p class="d-flex m-0 p-0"><a href= "/calendar/'.$ymd.'/2">2部</a><span class="w-25" style="height:20px; margin-left:30px; color:#000;" >'.$two_part->users->count().'</p>';
     }
     if($three_part){
-      $html[] = '<p class="d-flex m-0 p-0"><a href= "/calendar/'.$ymd.'/3">3部</a><span class="w-25" style="height:20px; margin-left:30px;" >'.$three_part->users->count().'</p>';
+      $html[] = '<p class="d-flex m-0 p-0"><a href= "/calendar/'.$ymd.'/3">3部</a><span class="w-25" style="height:20px; margin-left:30px; color:#000;" >'.$three_part->users->count().'</p>';
     }else{
-       $html[] = '<p class="d-flex m-0 p-0">1部<span class="w-25" style="height:20px; margin-left:30px;" >0</p>';
-       $html[] = '<p class="d-flex m-0 p-0">2部<span class="w-25" style="height:20px; margin-left:30px;" >0</p>';
-       $html[] = '<p class="d-flex m-0 p-0">3部<span class="w-25" style="height:20px; margin-left:30px;" >0</p>';
+       $html[] = '<p class="d-flex m-0 p-0">1部<span class="w-25" style="height:20px; margin-left:30px; color:#000;" >0</p>';
+       $html[] = '<p class="d-flex m-0 p-0">2部<span class="w-25" style="height:20px; margin-left:30px; color:#000;" >0</p>';
+       $html[] = '<p class="d-flex m-0 p-0">3部<span class="w-25" style="height:20px; margin-left:30px; color:#000;" >0</p>';
     }
     $html[] = '</div>';
 

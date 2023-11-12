@@ -46,12 +46,12 @@
       </p>
       <!--/.accordion-title-->
       <div class="sub_category">
-              <ul>
-                @foreach($sub_categories->where('main_category_id', $main_category->id) as $sub_category)
-                <li class="border-bottom border-secondary"><input type="submit" name="category_word"value="{{ $sub_category->sub_category }}"form="postSearchRequest" style="border:none;">
-                </li>
-                @endforeach
-              </ul>
+          <ul>
+            @foreach($sub_categories->where('main_category_id', $main_category->id) as $sub_category)
+            <li class="border-bottom border-secondary pt-3"><input type="submit" name="category_word"value="{{ $sub_category->sub_category }}"form="postSearchRequest" style="border:none;">
+            </li>
+            @endforeach
+          </ul>
       </div>
       <!--/.accordion-content sub_category-->
     </div>

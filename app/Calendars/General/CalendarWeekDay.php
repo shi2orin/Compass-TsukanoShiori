@@ -25,7 +25,7 @@ class CalendarWeekDay{
    */
 
    function render(){
-     return '<p class="day">' . $this->carbon->format("j"). '日</p>';
+     return '<p class="day mt-3">' . $this->carbon->format("j"). '日</p>';
    }
 
    function selectPart($ymd){
@@ -49,7 +49,7 @@ class CalendarWeekDay{
      }
 
      $html = [];
-     $html[] = '<select name="getPart[]" class="border-primary" style="width:70px; border-radius:5px;" form="reserveParts">';
+     $html[] = '<select name="getPart[]" class="border-primary mx-auto mb-4" style="width:100px; border-radius:5px;" form="reserveParts">';
      $html[] = '<option value="" selected></option>';
      if($one_part_frame == "0"){
        $html[] = '<option value="1" disabled>リモ1部(残り0枠)</option>';

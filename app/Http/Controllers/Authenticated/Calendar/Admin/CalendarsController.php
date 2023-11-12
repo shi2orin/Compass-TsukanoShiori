@@ -8,6 +8,7 @@ use App\Calendars\Admin\CalendarView;
 use App\Calendars\Admin\CalendarSettingView;
 use App\Models\Calendars\ReserveSettings;
 use App\Models\Calendars\Calendar;
+use Carbon\Carbon;
 use App\Models\USers\User;
 use Auth;
 use DB;
@@ -22,7 +23,8 @@ class CalendarsController extends Controller
 
     public function reserveDetail($date, $part){
         $reservePersons = ReserveSettings::with('users')->where('setting_reserve', $date)->where('setting_part', $part)->get();
-        return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part'));
+$reserveDate = Carbon::parse($date)->format('Y年m月d日');
+        return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'reserveDate', 'part'));
     }
 
     public function reserveSettings(){

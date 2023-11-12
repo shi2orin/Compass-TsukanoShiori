@@ -66,13 +66,6 @@ $(function () {
 });
 
 $(function () {
-  $('.arrow-wrap').click(function () {
-    $(this).next('div').slideToggle();
-    $(this).find(".arrow").toggleClass('open');
-  });
-});
-
-$(function () {
   // タイトルをクリックすると
   $(".js-main_category").on("click", function () {
     // クリックした次の要素を開閉

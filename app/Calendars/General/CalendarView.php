@@ -17,17 +17,17 @@ class CalendarView{
 
   function render(){
     $html = [];
-    $html[] = '<div class="calendar text-center">';
-    $html[] = '<table class="table">';
+    $html[] = '<div class="calendar text-center adjust-table">';
+    $html[] = '<table class="table border">';
     $html[] = '<thead>';
     $html[] = '<tr>';
-    $html[] = '<th>月</th>';
-    $html[] = '<th>火</th>';
-    $html[] = '<th>水</th>';
-    $html[] = '<th>木</th>';
-    $html[] = '<th>金</th>';
-    $html[] = '<th>土</th>';
-    $html[] = '<th>日</th>';
+    $html[] = '<th class="border">月</th>';
+    $html[] = '<th class="border">火</th>';
+    $html[] = '<th class="border">水</th>';
+    $html[] = '<th class="border">木</th>';
+    $html[] = '<th class="border">金</th>';
+    $html[] = '<th class="border day-sat">土</th>';
+    $html[] = '<th class="border day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -43,7 +43,7 @@ class CalendarView{
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<td class="past-day border">';
         }else{
-          $html[] = '<td class="calendar-td '.$day->getClassName().'">';
+          $html[] = '<td class="border calendar-td '.$day->getClassName().'">';
         }
         $html[] = $day->render();
 
@@ -58,17 +58,15 @@ class CalendarView{
             $reservePart = "リモ3部";
           }
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'.$reservePart.'</p>';
+            $html[] = '<p class="mx-auto mb-4 w-75" style="font-size:12px">'.$reservePart.'</p>';
 
           }else{
-            $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 js-modal-open" id="delete_date" style="font-size:12px" data-deletePart="'.$deletePart.'" data-date="'.$day->everyDay().'" value="'.$reservePart.'">'. $reservePart .'</button>';
-                        $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-
-            // モーダルに一旦渡しているため、ここの情報を変えても変わらない可能性、$deletePartをjsに渡してpostidと同じかんじで送れば2つの情報が手に入る
+            $html[] = '<button type="submit" class="btn btn-danger p-1 mx-auto mb-4 w-75 js-modal-open" id="delete_date" style="font-size:12px" data-deletePart="'.$deletePart.'" data-date="'.$day->everyDay().'" value="'.$reservePart.'">'. $reservePart .'</button>';
+             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }else{
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+            $html[] = '<p class="mx-auto mb-4 w-75" style="font-size:12px">受付終了</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
           $html[] = $day->selectPart($day->everyDay());
