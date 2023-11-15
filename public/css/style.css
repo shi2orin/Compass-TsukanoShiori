@@ -272,12 +272,9 @@ li {
   background-color: #03AAD2;
   width: 100px;
   padding: 5px 40px;
+  color: #FFF;
 }
 
-.post_btn a {
-  color: #FFF;
-  text-decoration: none;
-}
 
 .post_btn a:hover {
   color: #494949;
