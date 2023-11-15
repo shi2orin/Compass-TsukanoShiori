@@ -18,14 +18,16 @@
 </div>
 <div class="modal js-modal">
     <div class="modal__bg js-modal-close"></div>
-      <div class="modal__content">
+      <div class="modal__content w-75">
+        <div class="w-75 m-auto">
         <p class="reserveDay"></p>
         <p class="reservePart"></p>
         <p>上記の予約をキャンセルしてもよろしいでしょうか？</p>
-          <div class="modal-close">閉じる</div>
-          <input type="submit" class="btn btn-danger delete-btn" value="キャンセル" form="deleteParts">
-
-
+        </div>
+          <div class="w-75 m-auto d-flex justify-content-between">
+            <div class="modal-close  btn btn-primary d-block ">閉じる</div>
+            <input type="submit" class="btn btn-danger delete-btn d-block" value="キャンセル" form="deleteParts">
+          </div>
       </div>
     </div>
 </div>
