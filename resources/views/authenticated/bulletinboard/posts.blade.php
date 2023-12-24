@@ -25,47 +25,48 @@
     </div>
     @endforeach
   </div>
-  <div class="other_area w-25" style="margin-right:100px;" >
+  <div class="other_area w-25" style="margin-right:100px;">
     <div class="m-4">
-      <a class="post_btn btn w-100 mb-4" href="{{ route('post.input') }}" role="button" >投稿</a>
+      <a class="post_btn btn w-100 mb-4" href="{{ route('post.input') }}" role="button">投稿</a>
       <div class="d-flex mb-4">
         <input type="text" class="w-75 category_search" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input type="submit" class="category_btn w-25 btn "value="検索" form="postSearchRequest"style="background:#03AAD2;">
+        <input type="submit" class="category_btn w-25 btn " value="検索" form="postSearchRequest" style="background:#03AAD2;">
       </div>
       <div class="d-flex mb-4">
         <input type="submit" name="like_posts" class="category_btn btn  w-50" value="いいねした投稿" form="postSearchRequest" style="background:#ff9ece;">
-        <input type="submit" name="my_posts" class="category_btn btn  w-50" value="自分の投稿" form="postSearchRequest"style="background:#ffd700;">
+        <input type="submit" name="my_posts" class="category_btn btn  w-50" value="自分の投稿" form="postSearchRequest" style="background:#ffd700;">
       </div>
-      <div><p>カテゴリー検索</p>
-      <div class="category">
+      <div>
+        <p>カテゴリー検索</p>
+        <div class="category">
 
-     @foreach($main_categories as $main_category)
-    <div class="category_item">
-      <p class="main_category js-main_category border-bottom border-secondary">
-        {{ $main_category->main_category }}
-      </p>
-      <!--/.accordion-title-->
-      <div class="sub_category">
-          <ul>
-            @foreach($sub_categories->where('main_category_id', $main_category->id) as $sub_category)
-            <li class="border-bottom border-secondary pt-3"><input type="submit" name="category_word"value="{{ $sub_category->sub_category }}"form="postSearchRequest" style="border:none;">
-            </li>
-            @endforeach
-          </ul>
+          @foreach($main_categories as $main_category)
+          <div class="category_item">
+            <p class="main_category js-main_category border-bottom border-secondary">
+              {{ $main_category->main_category }}
+            </p>
+            <!--/.accordion-title-->
+            <div class="sub_category">
+              <ul>
+                @foreach($sub_categories->where('main_category_id', $main_category->id) as $sub_category)
+                <li class="border-bottom border-secondary pt-3"><input type="submit" name="category_word" value="{{ $sub_category->sub_category }}" form="postSearchRequest" style="border:none;">
+                </li>
+                @endforeach
+              </ul>
+            </div>
+            <!--/.accordion-content sub_category-->
+          </div>
+          @endforeach
+          <!--/.accordion-item main_category-->
+
+          <!--/.accordion-container消した-->
+        </div>
+        <!--/.accordionはcategory-->
+
+        <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>
       </div>
-      <!--/.accordion-content sub_category-->
+      <!-- otherareaのやつ -->
     </div>
-     @endforeach
-     <!--/.accordion-item main_category-->
+    <!-- bordareaのやつ -->
 
-<!--/.accordion-container消した-->
-</div>
-<!--/.accordionはcategory-->
-
-  <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>
-</div>
-<!-- otherareaのやつ -->
-</div>
-<!-- bordareaのやつ -->
-
-@endsection
+    @endsection
